@@ -7,7 +7,7 @@ import FormAttr3 from './FormAttr3';
 import FormImage from './FormImage';
 import FormRarity from './FormRarity';
 import FormTrunfo from './FormTrunfo';
-import FormButton from './FormButton';
+import './Form.css';
 
 export default class Form extends Component {
   render() {
@@ -23,7 +23,6 @@ export default class Form extends Component {
           <FormImage />
           <FormRarity />
           <FormTrunfo />
-          <FormButton />
         </form>
       </div>
     );

@@ -1,0 +1,32 @@
+form {
+  width: 30%;
+}
+
+input, textarea {
+  width: 95%;
+}
+
+select {
+  width: 98%;
+}
+
+span {
+  margin-right: 6%;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  margin-left: 25%;
+
+}
+
+.trunfo {
+  width: 20px;
+}
+
+.attr-input {
+  width: 70%;
+}

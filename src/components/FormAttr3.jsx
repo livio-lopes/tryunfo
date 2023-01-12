@@ -10,7 +10,7 @@ export default class FormAttr3 extends Component {
             data-testid="attr3-input"
             type="number"
             name="attr3"
-            id=""
+            className="attr-input"
           />
         </label>
       </fieldset>

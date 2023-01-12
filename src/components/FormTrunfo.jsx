@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FormButton from './FormButton';
 
 export default class FormTrunfo extends Component {
   render() {
@@ -9,10 +10,11 @@ export default class FormTrunfo extends Component {
             data-testid="trunfo-input"
             type="checkbox"
             name="trunfo"
-            id=""
+            className='trunfo'
           />
-          Super Trunfo
+          <span>Super Trunfo</span>
         </label>
+        <FormButton />
       </fieldset>
     );
   }

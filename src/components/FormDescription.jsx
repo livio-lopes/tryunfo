@@ -8,7 +8,7 @@ export default class FormDescription extends Component {
         <textarea
           name="description"
           data-testid="description-input"
-          cols="30"
+          cols="25"
           rows="10"
         />
       </fieldset>
