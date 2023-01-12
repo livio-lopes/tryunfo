@@ -21,20 +21,21 @@ export default class Form extends Component {
       <div>
         <h2>Adicione Nova Carta</h2>
         <form action="">
-          <label htmlFor="name-input">
+          <label htmlFor="cardName">
             <span>Nome</span>
             <input
               type="text"
-              name="name-input"
+              id="cardName"
+              name="cardName"
               data-testid="name-input"
               value={ cardName }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="description-input">
+          <label htmlFor="cardDescription">
             <span>Descrição</span>
             <textarea
-              name="description"
+              name="cardDescription"
               cols="30"
               rows="10"
               data-testid="description-input"
@@ -42,50 +43,50 @@ export default class Form extends Component {
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr1-input">
+          <label htmlFor="cardAttr1">
             <span>Attr01</span>
             <input
               type="number"
-              name="attr1-input"
+              name="cardAttr1"
               data-testid="attr1-input"
               value={ cardAttr1 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr2-input">
+          <label htmlFor="cardAttr2">
             <span>Attr02</span>
             <input
               type="number"
-              name="attr2-input"
+              name="cardAttr2"
               data-testid="attr2-input"
               value={ cardAttr2 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="attr3-input">
+          <label htmlFor="cardAttr3">
             <span>Attr03</span>
             <input
               type="number"
-              name="attr3-input"
+              name="cardAttr3"
               data-testid="attr3-input"
               value={ cardAttr3 }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="image-input">
+          <label htmlFor="cardImage">
             <span>Imagem</span>
             <input
               type="text"
-              name="image-input"
+              name="cardImage"
               data-testid="image-input"
               value={ cardImage }
               onChange={ onInputChange }
             />
           </label>
-          <label htmlFor="rare-input">
+          <label htmlFor="cardRare">
             <span>Raridade</span>
             <select
-              name="rare-input"
+              name="cardRare"
               data-testid="rare-input"
               value={ cardRare }
               onChange={ onInputChange }
@@ -95,11 +96,11 @@ export default class Form extends Component {
               <option value="muito raro">muito raro</option>
             </select>
           </label>
-          <label htmlFor="trunfo-input">
+          <label htmlFor="cardTrunfo">
             <span>Super Trunfo</span>
             <input
               type="checkbox"
-              name="trunfo-input"
+              name="cardTrunfo"
               data-testid="trunfo-input"
               checked={ cardTrunfo }
               onChange={ onInputChange }
