@@ -1,3 +1,7 @@
+div {
+  margin-left: 30px;
+}
+
 form {
   width: 30%;
 }
@@ -21,12 +25,4 @@ textarea {
 button {
   margin-left: 25%;
 
-}
-
-.trunfo {
-  width: 20px;
-}
-
-.attr-input {
-  width: 70%;
 }
