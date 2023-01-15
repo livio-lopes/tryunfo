@@ -93,21 +93,29 @@ class App extends React.Component {
   };
 
   render() {
+    const { deck } = this.state;
     return (
       <div>
         <h1>Tryunfo</h1>
-        <div className="container-form">
-          <h2>Adicione Nova Carta</h2>
-          <Form
-            { ...this.state }
-            onInputChange={ this.onInputChange }
-            onSaveButtonClick={ this.onSaveButtonClick }
-          />
-        </div>
-        <div className="container-preview">
-          <h1>Pré-Visualização</h1>
-          <Card { ...this.state } />
-        </div>
+        <section className="container-app">
+          <div className="container-form">
+            <h2>Adicione Nova Carta</h2>
+            <Form
+              { ...this.state }
+              onInputChange={ this.onInputChange }
+              onSaveButtonClick={ this.onSaveButtonClick }
+            />
+          </div>
+          <div className="container-preview">
+            <h1>Pré-Visualização</h1>
+            <Card className="container-preview" { ...this.state } />
+          </div>
+          <div>
+            <h1>Lista de Cartas</h1>
+            {deck.map((card, id) => (<Card key={ id } { ...card } />))}
+          </div>
+        </section>
+
       </div>
     );
   }

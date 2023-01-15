@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import './Form.css';
 
 export default class Form extends Component {
   render() {
@@ -19,7 +18,7 @@ export default class Form extends Component {
       hasTrunfo,
     } = this.props;
     return (
-      <div>
+      <div className="container-forms">
         <form action="">
           <label htmlFor="cardName">
             <span>Nome</span>
@@ -96,8 +95,8 @@ export default class Form extends Component {
             </select>
           </label>
           <label htmlFor="cardTrunfo">
-            <span>Super Trunfo</span>
-            { !hasTrunfo ? <input
+            {!hasTrunfo && <span>Super Trunfo</span>}
+            {!hasTrunfo ? <input
               type="checkbox"
               name="cardTrunfo"
               data-testid="trunfo-input"
