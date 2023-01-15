@@ -13,9 +13,11 @@ class App extends React.Component {
     cardRare: '',
     cardTrunfo: false,
     isSaveButtonDisabled: true,
+    deck: [],
+    hasTrunfo: false,
   };
 
-  validation = () => {
+  validationInputs = () => {
     this.setState((prevState) => {
       const noVoid = (prevState.cardName.length > 0)
         && (prevState.cardDescription.length > 0)
@@ -42,10 +44,10 @@ class App extends React.Component {
     this.setState({
       [name]: value,
     });
-    this.validation();
+    this.validationInputs();
   };
 
-  onSaveButtonClick = () => {
+  clearInputs = () => {
     this.setState({
       cardName: '',
       cardDescription: '',
@@ -59,16 +61,53 @@ class App extends React.Component {
     });
   };
 
+  onSaveButtonClick = () => {
+    const { cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo } = this.state;
+
+    const novoDeck = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState((prevState) => {
+      if (prevState.deck.length > 0) {
+        return { deck: [...prevState.deck, novoDeck],
+          hasTrunfo: cardTrunfo };
+      }
+      return { deck: [novoDeck],
+        hasTrunfo: cardTrunfo };
+    });
+    this.clearInputs();
+  };
+
   render() {
     return (
       <div>
         <h1>Tryunfo</h1>
-        <Form
-          { ...this.state }
-          onInputChange={ this.onInputChange }
-          onSaveButtonClick={ this.onSaveButtonClick }
-        />
-        <Card { ...this.state } />
+        <div className="container-form">
+          <h2>Adicione Nova Carta</h2>
+          <Form
+            { ...this.state }
+            onInputChange={ this.onInputChange }
+            onSaveButtonClick={ this.onSaveButtonClick }
+          />
+        </div>
+        <div className="container-preview">
+          <h1>Pré-Visualização</h1>
+          <Card { ...this.state } />
+        </div>
       </div>
     );
   }
