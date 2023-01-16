@@ -12,11 +12,13 @@ export default class Card extends Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      preview,
+      deleteCard,
     } = this.props;
 
     return (
       <div cardName="container-card">
-        <h2 data-testid="name-card">{`Nome: ${cardName}`}</h2>
+        <h2 data-testid="name-card">{`${cardName}`}</h2>
         <img src={ cardImage } alt={ cardName } data-testid="image-card" />
         <p data-testid="description-card">{cardDescription}</p>
         <span data-testid="attr1-card">
@@ -33,6 +35,16 @@ export default class Card extends Component {
         </span>
         <span data-testid="rare-card">{cardRare}</span>
         {cardTrunfo && (<span data-testid="trunfo-card">Super Trunfo</span>)}
+        {!preview && (
+          <button
+            type="button"
+            id={ cardName }
+            data-testid="delete-button"
+            onClick={ deleteCard }
+          >
+            Excluir
+
+          </button>)}
       </div>
     );
   }

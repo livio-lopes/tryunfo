@@ -15,6 +15,16 @@ class App extends React.Component {
     isSaveButtonDisabled: true,
     deck: [],
     hasTrunfo: false,
+    preview: true,
+  };
+
+  deleteCard = ({ target }) => {
+    const { deck } = this.state;
+    const theF = false;
+    this.setState({
+      hasTrunfo: deck.filter((e) => e.cardName === target.id).hasTrunfo ? theF : theF,
+      deck: deck.filter((e) => e.cardName !== target.id),
+    });
   };
 
   validationInputs = () => {
@@ -58,6 +68,7 @@ class App extends React.Component {
       cardRare: '',
       cardTrunfo: false,
       isSaveButtonDisabled: true,
+      preview: true,
     });
   };
 
@@ -84,10 +95,12 @@ class App extends React.Component {
     this.setState((prevState) => {
       if (prevState.deck.length > 0) {
         return { deck: [...prevState.deck, novoDeck],
-          hasTrunfo: cardTrunfo };
+          hasTrunfo: cardTrunfo,
+          preview: false };
       }
       return { deck: [novoDeck],
-        hasTrunfo: cardTrunfo };
+        hasTrunfo: cardTrunfo,
+        preview: false };
     });
     this.clearInputs();
   };
@@ -112,7 +125,11 @@ class App extends React.Component {
           </div>
           <div>
             <h1>Lista de Cartas</h1>
-            {deck.map((card, id) => (<Card key={ id } { ...card } />))}
+            {deck.map((card, index) => (<Card
+              key={ index }
+              { ...card }
+              deleteCard={ this.deleteCard }
+            />))}
           </div>
         </section>
 
