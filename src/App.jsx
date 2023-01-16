@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
+import Search from './components/Search';
 
 class App extends React.Component {
   state = {
@@ -16,6 +17,21 @@ class App extends React.Component {
     deck: [],
     hasTrunfo: false,
     preview: true,
+    search: '',
+  };
+
+  onSearch = ({ target }) => {
+    const { value } = target;
+    const { name } = target;
+    this.setState({
+      [name]: value,
+    });
+    const { deck } = this.state;
+    this.setState(() => {
+      const filtredDeck = deck.filter((e) => (e.cardName.includes(value) ? e : ''));
+      console.log(filtredDeck);
+      return { deck: filtredDeck };
+    });
   };
 
   deleteCard = ({ target }) => {
@@ -110,6 +126,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Tryunfo</h1>
+        <Search
+          { ...this.state }
+          onSearch={ this.onSearch }
+        />
         <section className="container-app">
           <div className="container-form">
             <h2>Adicione Nova Carta</h2>
