@@ -59,4 +59,6 @@ Card.propTypes = {
   cardImage: PropTypes.string,
   cardRare: PropTypes.string,
   cardTrunfo: PropTypes.bool,
+  preview: PropTypes.bool,
+  deleteCard: PropTypes.func,
 }.isRequired;

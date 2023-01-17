@@ -132,4 +132,5 @@ Form.propTypes = {
   isSaveButtonDisabled: PropTypes.bool,
   onInputChange: PropTypes.func,
   onSaveButtonClick: PropTypes.func,
+  hasTrunfo: PropTypes.bool,
 }.isRequired;

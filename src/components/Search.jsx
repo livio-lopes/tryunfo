@@ -49,6 +49,8 @@ export default class Search extends Component {
 Search.propTypes = {
   search: PropTypes.string,
   searchRare: PropTypes.string,
+  searchTrunfo: PropTypes.bool,
   onSearchName: PropTypes.func,
   onSearchRare: PropTypes.func,
+  onSearchTrunfo: PropTypes.func,
 }.isRequerid;
