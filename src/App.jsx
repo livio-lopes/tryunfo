@@ -19,6 +19,7 @@ class App extends React.Component {
     preview: true,
     search: '',
     searchRare: '',
+    searchTrunfo: false,
   };
 
   onSearchName = ({ target }) => {
@@ -43,9 +44,19 @@ class App extends React.Component {
     const { deck } = this.state;
     if (value !== 'todas') {
       this.setState({
-        deck: deck.map((e) => (e.cardRare === value ? e : '')),
+        deck: deck.map((e) => (e.cardRare === value && e)),
       });
     }
+  };
+
+  onSearchTrunfo = ({ target }) => {
+    const { checked } = target;
+    const { name } = target;
+    const { deck } = this.state;
+    this.setState({
+      [name]: checked,
+      deck: deck.map((e) => e.cardTrunfo && e),
+    });
   };
 
   deleteCard = ({ target }) => {
@@ -148,6 +159,7 @@ class App extends React.Component {
           { ...this.state }
           onSearchName={ this.onSearchName }
           onSearchRare={ this.onSearchRare }
+          onSearchTrunfo={ this.onSearchTrunfo }
         />
         <section className="container-app">
           <div className="container-form">
