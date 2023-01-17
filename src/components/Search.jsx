@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export default class Search extends Component {
   render() {
-    const { search, onSearch } = this.props;
+    const { search, searchRare, onSearchName, onSearchRare } = this.props;
     return (
       <div>
         <h2>Filtro de busca</h2>
@@ -11,10 +11,21 @@ export default class Search extends Component {
           data-testid="name-filter"
           name="search"
           value={ search }
-          onChange={ onSearch }
+          onChange={ onSearchName }
           type="text"
           placeholder="Nome da Carta"
         />
+        <select
+          data-testid="rare-filter"
+          name="searchRare"
+          value={ searchRare }
+          onChange={ onSearchRare }
+        >
+          <option value="todas">todas</option>
+          <option value="normal">normal</option>
+          <option value="raro">raro</option>
+          <option value="muito raro">muito raro</option>
+        </select>
       </div>
     );
   }
@@ -22,5 +33,7 @@ export default class Search extends Component {
 
 Search.propTypes = {
   search: PropTypes.string,
-  onSearch: PropTypes.func,
+  searchRare: PropTypes.string,
+  onSearchName: PropTypes.func,
+  onSearchRare: PropTypes.func,
 }.isRequerid;

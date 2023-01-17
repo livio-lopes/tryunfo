@@ -18,9 +18,10 @@ class App extends React.Component {
     hasTrunfo: false,
     preview: true,
     search: '',
+    searchRare: '',
   };
 
-  onSearch = ({ target }) => {
+  onSearchName = ({ target }) => {
     const { value } = target;
     const { name } = target;
     this.setState({
@@ -28,10 +29,23 @@ class App extends React.Component {
     });
     const { deck } = this.state;
     this.setState(() => {
-      const filtredDeck = deck.filter((e) => (e.cardName.includes(value) ? e : ''));
+      const filtredDeck = deck.filter((e) => (e.cardName.includes(value) && e));
       console.log(filtredDeck);
-      return { deck: filtredDeck };
     });
+  };
+
+  onSearchRare = ({ target }) => {
+    const { value } = target;
+    const { name } = target;
+    this.setState({
+      [name]: value,
+    });
+    const { deck } = this.state;
+    if (value !== 'todas') {
+      this.setState({
+        deck: deck.map((e) => (e.cardRare === value ? e : '')),
+      });
+    }
   };
 
   deleteCard = ({ target }) => {
@@ -110,13 +124,17 @@ class App extends React.Component {
     };
     this.setState((prevState) => {
       if (prevState.deck.length > 0) {
-        return { deck: [...prevState.deck, novoDeck],
+        return {
+          deck: [...prevState.deck, novoDeck],
           hasTrunfo: cardTrunfo,
-          preview: false };
+          preview: false,
+        };
       }
-      return { deck: [novoDeck],
+      return {
+        deck: [novoDeck],
         hasTrunfo: cardTrunfo,
-        preview: false };
+        preview: false,
+      };
     });
     this.clearInputs();
   };
@@ -128,7 +146,8 @@ class App extends React.Component {
         <h1>Tryunfo</h1>
         <Search
           { ...this.state }
-          onSearch={ this.onSearch }
+          onSearchName={ this.onSearchName }
+          onSearchRare={ this.onSearchRare }
         />
         <section className="container-app">
           <div className="container-form">
