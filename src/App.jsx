@@ -29,9 +29,8 @@ class App extends React.Component {
       [name]: value,
     });
     const { deck } = this.state;
-    this.setState(() => {
-      const filtredDeck = deck.filter((e) => (e.cardName.includes(value) && e));
-      console.log(filtredDeck);
+    this.setState({
+      deck: deck.filter((e) => (e.cardName.includes(value) && e)),
     });
   };
 
